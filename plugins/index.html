@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine.js Plugins</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/mask@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/intersect@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/persist@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/focus@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/collapse@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/morph@3.10.2/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Mask -->
+    <!-- <div x-data>
+      <input type="text" x-mask="99/99/9999" placeholder="MM/DD/YYYY" />
+
+      <input
+        x-mask:dynamic="
+    $input.startsWith('34') || $input.startsWith('37')
+        ? '9999 999999 99999' : '9999 9999 9999 9999'
+"
+      />
+    </div>
+    <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /> -->
+
+    <!-- Intersect -->
+    <!-- <div x-data="{ shown: false }" x-intersect="shown = true">
+      <div x-show="shown" x-transition>I'm in the viewport!</div>
+    </div>
+    <div x-data>
+      <div
+        x-data="{dataSrc: '1.jpg', src: null}"
+        class="w-48 h-48 border"
+        x-intersect.once.half="src = dataSrc"
+      >
+        <img x-show="src" x-transition :src="src" alt="" />
+      </div>
+    </div> -->
+
+    <!-- Persist -->
+    <!-- <div x-data="{count: $persist(0).as('my-count').using(localStorage)}">
+      <button
+        x-on:click="count++"
+        class="inline-flex items-center py-2 px-6 bg-purple-600 hover:bg-opacity-95 text-white rounded-md shadow"
+      >
+        Increment
+      </button>
+
+      <span x-text="count"></span>
+    </div>
+    <div x-data="{name: $persist(null).as('user-name')}">
+      <input type="text" x-model="name" />
+    </div> -->
+
+    <!-- Focus -->
+    <!-- <div x-data="{ open: false }">
+      <button @click="open = !open">Open Dialog</button>
+
+      <span x-show="open" x-trap="open">
+        <p>...</p>
+
+        <input type="text" placeholder="Some input..." />
+
+        <input type="text" placeholder="Some other input..." />
+
+        <button @click="open = false">Close Dialog</button>
+      </span>
+      <input type="text" />
+    </div> -->
+
+    <!-- Collapse -->
+    <!-- <div x-data="{ expanded: false }">
+      <p x-show="expanded" x-collapse.min.50px>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore sunt
+        magnam quibusdam dignissimos excepturi quisquam repellat culpa quod
+        cupiditate et animi fugit pariatur repellendus rem ratione totam, dolor
+        voluptatem omnis.
+      </p>
+      <button
+        @click="expanded = ! expanded"
+        x-text="expanded ? 'Read Less' : 'Read More'"
+      ></button>
+    </div> -->
+
+    <!-- Morph -->
+    <div x-data="{ message: 'Change me, then press the button!' }">
+      <input type="text" x-model="message" />
+      <span x-text="message"></span>
+    </div>
+
+    <button>Run Morph</button>
+
+    <script>
+      document.querySelector("button").addEventListener("click", () => {
+        let el = document.querySelector("div");
+
+        Alpine.morph(
+          el,
+          `
+                <div x-data="{ message: 'Change me, then press the button!' }">
+                    <h2>See how new elements have been added</h2>
+     
+                    <input type="text" x-model="message">
+                    <span x-text="message"></span>
+     
+                    <h2>but the state of this component hasn't changed? Magical.</h2>
+                </div>
+            `
+        );
+      });
+    </script>
+  </body>
+</html>
