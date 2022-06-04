@@ -41,7 +41,7 @@ In basics section we will learn all the basic things about alpine.js: its direct
  - $id
 
 ## Alpine.js Components
-In components section we will build 7 unique components with Alpine.js: [Demo](Demo)
+In components section we will build 7 unique components with Alpine.js: [Demo](https://alpinejs-course.netlify.app/components/)
 
 #### Components Created
 1. Dropdown
